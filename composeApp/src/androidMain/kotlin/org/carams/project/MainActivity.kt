@@ -11,9 +11,10 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
+        val batteryManager = BatteryManager(this)
 
         setContent {
-            App()
+            App(batteryManager)
         }
     }
 }
@@ -21,5 +22,5 @@ class MainActivity : ComponentActivity() {
 @Preview
 @Composable
 fun AppAndroidPreview() {
-    App()
+    App(null)
 }

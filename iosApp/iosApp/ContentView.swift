@@ -17,6 +17,7 @@ struct ContentView: View {
                         .font(.system(size: 200))
                         .foregroundColor(.accentColor)
                     Text("SwiftUI: \(Greeting().greet())")
+                    Text("SwiftUI: \(Greeting().greet())")
                 }
                 .transition(.move(edge: .top).combined(with: .opacity))
             }
@@ -28,6 +29,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
+        let batteryManager = BatteryManager()
         ContentView()
     }
 }

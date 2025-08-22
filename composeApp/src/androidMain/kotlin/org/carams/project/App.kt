@@ -21,7 +21,7 @@ import craft.composeapp.generated.resources.compose_multiplatform
 
 @Composable
 @Preview
-fun App() {
+fun App(batteryManager: BatteryManager?) {
     MaterialTheme {
         var showContent by remember { mutableStateOf(false) }
         Column(
@@ -42,6 +42,7 @@ fun App() {
                 ) {
                     Image(painterResource(Res.drawable.compose_multiplatform), null)
                     Text("Compose: $greeting")
+                    Text("Battery Level: ${batteryManager?.getBatteryLevel() ?: "Unknown"}")
                 }
             }
         }
