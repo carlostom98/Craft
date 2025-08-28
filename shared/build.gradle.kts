@@ -27,11 +27,26 @@ kotlin {
     
     sourceSets {
         commonMain.dependencies {
-            // put your Multiplatform dependencies here
+            implementation(libs.kotlinx.coroutines)
         }
+
+        androidMain.dependencies {
+            implementation(libs.android.lifecycle.mvvm)
+        }
+
+        iosMain.dependencies {
+
+        }
+
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
+    }
+    sourceSets.commonMain.dependencies {
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:null")
+    }
+    sourceSets.iosMain.dependencies {
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:null")
     }
 }
 
