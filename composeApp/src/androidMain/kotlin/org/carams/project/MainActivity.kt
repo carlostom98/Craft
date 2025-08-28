@@ -8,15 +8,17 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import org.carams.utils.GetItemsImplementation
+import org.carams.utils.IGetItems
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
-        val batteryManager = BatteryManager(this)
+        val getItems: IGetItems = GetItemsImplementation()
 
         setContent {
-            App(batteryManager)
+            App(getItems)
         }
     }
 }
@@ -24,6 +26,6 @@ class MainActivity : ComponentActivity() {
 @Preview
 @Composable
 fun AppAndroidPreview(context: Context = LocalContext.current) {
-    val batteryManager = BatteryManager(context)
-    App(null)
+    val getItems: IGetItems = GetItemsImplementation()
+    App(getItems)
 }
