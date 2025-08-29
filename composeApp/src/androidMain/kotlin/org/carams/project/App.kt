@@ -7,13 +7,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import org.carams.project.screens.AboutScreen
-import org.carams.utils.IGetItems
+import org.carams.project.mvvm.ArticlesViewModel
+import org.carams.project.screens.ArticlesScreen
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 @Preview
-fun App(getItems: IGetItems) {
+fun App(articlesViewModel: ArticlesViewModel?) {
     MaterialTheme {
         Column(
             modifier = Modifier
@@ -21,7 +21,7 @@ fun App(getItems: IGetItems) {
                 .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            AboutScreen(getItems)
+            ArticlesScreen(articlesViewModel = articlesViewModel)
         }
     }
 }

@@ -5,9 +5,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import org.carams.project.mvvm.ArticlesViewModel
 import org.carams.utils.GetItemsImplementation
 import org.carams.utils.IGetItems
 
@@ -16,9 +18,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         val getItems: IGetItems = GetItemsImplementation()
+        val articlesViewModel: ArticlesViewModel by viewModels()
 
         setContent {
-            App(getItems)
+            App(articlesViewModel)
         }
     }
 }
@@ -26,6 +29,5 @@ class MainActivity : ComponentActivity() {
 @Preview
 @Composable
 fun AppAndroidPreview(context: Context = LocalContext.current) {
-    val getItems: IGetItems = GetItemsImplementation()
-    App(getItems)
+    App(null)
 }
