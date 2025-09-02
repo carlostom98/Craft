@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -34,6 +35,8 @@ fun ArticleItemView(articleEntity: ArticleEntity) {
     val spacerHeight = 16.dp
     Column(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
         AsyncImage(
+            modifier = Modifier.fillMaxWidth(),
+            contentScale = ContentScale.Fit,
             model = articleEntity.imageUrl,
             contentDescription = "Image ${articleEntity.name}"
         )
@@ -44,11 +47,3 @@ fun ArticleItemView(articleEntity: ArticleEntity) {
     }
 }
 
-@Composable
-@Preview(showBackground = true)
-fun AsyncImagePreview() {
-    AsyncImage(
-        model = "",
-        contentDescription = "Image"
-    )
-}

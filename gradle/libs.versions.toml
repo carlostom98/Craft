@@ -15,6 +15,7 @@ kotlin = "2.2.0"
 lyfecycle-mvvm = "2.9.3"
 kotlinx-coroutines = "1.10.2"
 coil-compose = "3.3.0"
+touchlab-version = "0.4.19"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -38,3 +39,4 @@ androidLibrary = { id = "com.android.library", version.ref = "agp" }
 composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+touchlab = { id = "co.touchlab.skie", version.ref = "touchlab-version" }
