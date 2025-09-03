@@ -9,6 +9,7 @@ import org.carams.project.atoms.Loader
 import org.carams.project.atoms.Toolbar
 import org.carams.project.molecules.ArticlesListView
 import org.carams.project.mvvm.ArticlesViewModel
+import org.carams.project.states.ArticleState
 
 @Composable
 fun ArticlesScreen(articlesViewModel: ArticlesViewModel?) {
@@ -16,7 +17,7 @@ fun ArticlesScreen(articlesViewModel: ArticlesViewModel?) {
         articlesViewModel?.userIntent(ArticlesViewModel.UserIntent.GET_ALL)
     }
 
-    val articlesState = articlesViewModel?.articlesState?.collectAsState()
+    val articlesState = articlesViewModel?.articlesState?.collectAsState(ArticleState())
 
     Column {
         Toolbar()

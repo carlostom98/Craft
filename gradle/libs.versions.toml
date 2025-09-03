@@ -15,7 +15,7 @@ kotlin = "2.2.0"
 lyfecycle-mvvm = "2.9.3"
 kotlinx-coroutines = "1.10.2"
 coil-compose = "3.3.0"
-touchlab-version = "0.4.19"
+touchlab-version = "0.10.6"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }

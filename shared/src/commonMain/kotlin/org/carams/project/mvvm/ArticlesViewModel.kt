@@ -8,6 +8,7 @@ import org.carams.project.states.ArticleEntity
 import org.carams.project.states.ArticleState
 
 class ArticlesViewModel: BaseViewModel() {
+
     private val _articlesState = MutableStateFlow<ArticleState>(ArticleState())
     val articlesState get() = _articlesState.asStateFlow()
 

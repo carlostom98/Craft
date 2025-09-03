@@ -8,18 +8,16 @@
 import SwiftUI
 import Shared
 
-extension ArticlesUI {
     
-
-
 struct ArticlesUI: View {
     
+    @ObservedObject private(set) var viewModel: ArticlesViewModelWrapper
     
     var body: some View {
         VStack {
             AppBar()
             
-            if viewModel.articlesState.isLoading {
+           /** if viewModel.articlesState.isLoading {
                 Loader()
             }
             
@@ -38,9 +36,7 @@ struct ArticlesUI: View {
                     }
                 }
             }
-        }
-    }.onAppear {
-        self.viewModel.startObserving()
+        }**/
     }
 }
 
