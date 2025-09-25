@@ -1,7 +1,6 @@
 package org.carams.project.mvvm
 
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.carams.project.states.ArticleEntity
@@ -9,7 +8,7 @@ import org.carams.project.states.ArticleState
 
 class ArticlesViewModel: BaseViewModel() {
     private val _articlesState = MutableStateFlow<ArticleState>(ArticleState())
-    val articlesState get() = _articlesState.asStateFlow()
+    val articlesState get() = _articlesState.toMultiplatform(scope)
 
     fun userIntent(userIntent: UserIntent) {
         when(userIntent) {
@@ -19,7 +18,7 @@ class ArticlesViewModel: BaseViewModel() {
         }
     }
 
-    private fun getArticles() {
+    fun getArticles() {
         scope.launch {
             _articlesState.update {
                 getListOfArticles()?.let { listOfValues ->

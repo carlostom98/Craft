@@ -7,6 +7,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import org.carams.project.mvvm.ArticlesViewModel
 import org.carams.project.screens.ArticlesScreen
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -17,7 +18,7 @@ fun App(articlesViewModel: ArticlesViewModel?) {
     MaterialTheme {
         Column(
             modifier = Modifier
-                .background(MaterialTheme.colorScheme.primaryContainer)
+                .background(Color.White)
                 .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {

@@ -8,41 +8,6 @@
 import SwiftUI
 import Shared
 
-extension ArticlesUI {
-    
-
-
-struct ArticlesUI: View {
-    
-    
-    var body: some View {
-        VStack {
-            AppBar()
-            
-            if viewModel.articlesState.isLoading {
-                Loader()
-            }
-            
-            if let error = viewModel.articlesState.error {
-                ErrorMessage(message: error)
-            }
-            
-            let articles = viewModel.articlesState.articles
-            
-            if(!articles.isEmpty) {
-                ScrollView {
-                    LazyVStack(spacing: 10) {
-                        ForEach(articles, id: \.self) { article in
-                            ArticleItemView(article: <#T##ArticleEntity#>)
-                        }
-                    }
-                }
-            }
-        }
-    }.onAppear {
-        self.viewModel.startObserving()
-    }
-}
 
 struct AppBar: View {
     var body: some View {

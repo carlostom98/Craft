@@ -36,7 +36,7 @@ fun ArticleItemView(articleEntity: ArticleEntity) {
     Column(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
         AsyncImage(
             modifier = Modifier.fillMaxWidth(),
-            contentScale = ContentScale.Fit,
+            contentScale = ContentScale.Crop,
             model = articleEntity.imageUrl,
             contentDescription = "Image ${articleEntity.name}"
         )
