@@ -1,9 +1,11 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.util.Properties
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.kotlinxSerialization)
 }
 
 kotlin {
@@ -24,18 +26,25 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
-        commonMain.dependencies {
-            implementation(libs.kotlinx.coroutines)
+        commonMain {
+            kotlin.srcDirs("$buildDir/generated-src/kotlin")
+            dependencies {
+                implementation(libs.kotlinx.coroutines)
+                implementation(libs.ktor.client.core)
+                implementation(libs.ktor.client.content.negotiation)
+                implementation(libs.ktor.serialization.kotlinx)
+            }
         }
 
         androidMain.dependencies {
             implementation(libs.android.lifecycle.mvvm)
+            implementation(libs.ktor.client.okhttp)
         }
 
         iosMain.dependencies {
-
+            implementation(libs.ktor.client.darwin)
         }
 
         commonTest.dependencies {
@@ -59,5 +68,27 @@ android {
     }
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
+        val authToken: String = project.loadLocalProperty("local.properties" ,"AUTH_TOKEN")
+
+        buildConfigField("String", "AUTH_TOKEN", authToken)
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
+}
+
+
+fun Project.loadLocalProperty(
+    path: String,
+    propertyName: String,
+): String {
+    val localProperties = Properties()
+    val localPropertiesFile = project.rootProject.file(path)
+    if (localPropertiesFile.exists()) {
+        localProperties.load(localPropertiesFile.inputStream())
+        return localProperties.getProperty(propertyName)
+    } else {
+        throw GradleException("can not find property : $propertyName")
     }
 }
